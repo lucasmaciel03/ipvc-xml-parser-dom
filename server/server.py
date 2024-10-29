@@ -9,22 +9,32 @@ from concurrent import futures
 import grpc
 import xml_service_pb2
 import xml_service_pb2_grpc
-from xml_parser import parse_xml  # Importa a função de parsing
+from xml_parser import parse_xml
+from xml_validator import validate_xml
 
 
 class XMLParserService(xml_service_pb2_grpc.XMLParserServiceServicer):
     def SendXMLFile(self, request, context):
         file_path = f"server/data/{request.filename}"
+        xsd_path = "schemas/schema.xsd"  # Caminho para o ficheiro XSD
+
         try:
+            # Salva o conteúdo do ficheiro recebido
             with open(file_path, "w") as file:
                 file.write(request.file_content)
 
-            print(f"Conteúdo do ficheiro recebido:\n{request.file_content}")  # Log para ver o conteúdo
+            print(f"Conteúdo do ficheiro recebido:\n{request.file_content}")
+
+            # Valida o ficheiro XML com o esquema XSD
+            is_valid, validation_message = validate_xml(file_path, xsd_path)
+            if not is_valid:
+                return xml_service_pb2.XMLResponse(message=validation_message, success=False)
 
             # Realiza o parsing do ficheiro XML recebido
             parse_xml(file_path)
 
-            return xml_service_pb2.XMLResponse(message="File received successfully and parsed.", success=True)
+            return xml_service_pb2.XMLResponse(message="File received, validated, and parsed successfully.",
+                                               success=True)
         except Exception as e:
             return xml_service_pb2.XMLResponse(message=f"Error: {str(e)}", success=False)
 
