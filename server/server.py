@@ -11,6 +11,7 @@ import xml_service_pb2
 import xml_service_pb2_grpc
 from xml_parser import parse_xml
 from xml_validator import validate_xml
+from xml_exporter import export_to_json, export_to_csv
 
 
 class XMLParserService(xml_service_pb2_grpc.XMLParserServiceServicer):
@@ -33,7 +34,11 @@ class XMLParserService(xml_service_pb2_grpc.XMLParserServiceServicer):
             # Realiza o parsing do ficheiro XML recebido
             parse_xml(file_path)
 
-            return xml_service_pb2.XMLResponse(message="File received, validated, and parsed successfully.",
+            # Exporta para JSON e CSV
+            export_to_json(file_path, "server/data/output.json")
+            export_to_csv(file_path, "server/data/output.csv")
+
+            return xml_service_pb2.XMLResponse(message="File received, validated, parsed, and exported successfully.",
                                                success=True)
         except Exception as e:
             return xml_service_pb2.XMLResponse(message=f"Error: {str(e)}", success=False)
