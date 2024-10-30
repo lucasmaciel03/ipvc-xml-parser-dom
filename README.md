@@ -1,7 +1,6 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/python.png" alt="Logo" width="auto" height="150">
     <img src="images/ipvc.png" alt="Logo" width="auto" height="200">
   </a>
 
