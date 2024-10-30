@@ -3,18 +3,25 @@ syntax = "proto3";
 package xmlparser;
 
 service XMLParserService {
-  // Método para enviar um ficheiro XML do cliente para o servidor
   rpc SendXMLFile(XMLRequest) returns (XMLResponse);
+  rpc GetXMLSubset(TagIDRequest) returns (XMLSubsetResponse);
+  rpc ConvertCSVToXML(XMLRequest) returns (XMLResponse);
 }
 
-// Mensagem para envio de ficheiro XML
-message  XMLRequest {
+message XMLRequest {
   string filename = 1;
   string file_content = 2;
 }
 
-// Mensagem de resposta do servidor
 message XMLResponse {
   string message = 1;
   bool success = 2;
+}
+
+message TagIDRequest {
+  repeated string tag_ids = 1; // Lista de IDs de tags
+}
+
+message XMLSubsetResponse {
+  string subset_content = 1; // Subconjunto do XML como string
 }

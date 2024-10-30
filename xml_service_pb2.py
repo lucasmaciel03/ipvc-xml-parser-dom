@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11xml_service.proto\x12\txmlparser\"4\n\nXMLRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x14\n\x0c\x66ile_content\x18\x02 \x01(\t\"/\n\x0bXMLResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\x32P\n\x10XMLParserService\x12<\n\x0bSendXMLFile\x12\x15.xmlparser.XMLRequest\x1a\x16.xmlparser.XMLResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11xml_service.proto\x12\txmlparser\"4\n\nXMLRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x14\n\x0c\x66ile_content\x18\x02 \x01(\t\"/\n\x0bXMLResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\"\x1f\n\x0cTagIDRequest\x12\x0f\n\x07tag_ids\x18\x01 \x03(\t\"+\n\x11XMLSubsetResponse\x12\x16\n\x0esubset_content\x18\x01 \x01(\t2\xd9\x01\n\x10XMLParserService\x12<\n\x0bSendXMLFile\x12\x15.xmlparser.XMLRequest\x1a\x16.xmlparser.XMLResponse\x12\x45\n\x0cGetXMLSubset\x12\x17.xmlparser.TagIDRequest\x1a\x1c.xmlparser.XMLSubsetResponse\x12@\n\x0f\x43onvertCSVToXML\x12\x15.xmlparser.XMLRequest\x1a\x16.xmlparser.XMLResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,6 +35,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_XMLREQUEST']._serialized_end=84
   _globals['_XMLRESPONSE']._serialized_start=86
   _globals['_XMLRESPONSE']._serialized_end=133
-  _globals['_XMLPARSERSERVICE']._serialized_start=135
-  _globals['_XMLPARSERSERVICE']._serialized_end=215
+  _globals['_TAGIDREQUEST']._serialized_start=135
+  _globals['_TAGIDREQUEST']._serialized_end=166
+  _globals['_XMLSUBSETRESPONSE']._serialized_start=168
+  _globals['_XMLSUBSETRESPONSE']._serialized_end=211
+  _globals['_XMLPARSERSERVICE']._serialized_start=214
+  _globals['_XMLPARSERSERVICE']._serialized_end=431
 # @@protoc_insertion_point(module_scope)

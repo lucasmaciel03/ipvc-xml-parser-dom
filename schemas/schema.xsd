@@ -6,6 +6,7 @@
             <xs:sequence>
                 <xs:element name="element" minOccurs="1" maxOccurs="unbounded">
                     <xs:complexType mixed="true">
+                        <xs:attribute name="id" type="xs:string" use="required"/> <!-- Adiciona o atributo 'id' -->
                         <xs:attribute name="attribute" type="xs:string" use="required"/>
                     </xs:complexType>
                 </xs:element>

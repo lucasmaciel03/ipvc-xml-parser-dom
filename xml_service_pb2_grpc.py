@@ -39,14 +39,35 @@ class XMLParserServiceStub(object):
                 request_serializer=xml__service__pb2.XMLRequest.SerializeToString,
                 response_deserializer=xml__service__pb2.XMLResponse.FromString,
                 _registered_method=True)
+        self.GetXMLSubset = channel.unary_unary(
+                '/xmlparser.XMLParserService/GetXMLSubset',
+                request_serializer=xml__service__pb2.TagIDRequest.SerializeToString,
+                response_deserializer=xml__service__pb2.XMLSubsetResponse.FromString,
+                _registered_method=True)
+        self.ConvertCSVToXML = channel.unary_unary(
+                '/xmlparser.XMLParserService/ConvertCSVToXML',
+                request_serializer=xml__service__pb2.XMLRequest.SerializeToString,
+                response_deserializer=xml__service__pb2.XMLResponse.FromString,
+                _registered_method=True)
 
 
 class XMLParserServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def SendXMLFile(self, request, context):
-        """Método para enviar um ficheiro XML do cliente para o servidor
-        """
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetXMLSubset(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ConvertCSVToXML(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -56,6 +77,16 @@ def add_XMLParserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SendXMLFile': grpc.unary_unary_rpc_method_handler(
                     servicer.SendXMLFile,
+                    request_deserializer=xml__service__pb2.XMLRequest.FromString,
+                    response_serializer=xml__service__pb2.XMLResponse.SerializeToString,
+            ),
+            'GetXMLSubset': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetXMLSubset,
+                    request_deserializer=xml__service__pb2.TagIDRequest.FromString,
+                    response_serializer=xml__service__pb2.XMLSubsetResponse.SerializeToString,
+            ),
+            'ConvertCSVToXML': grpc.unary_unary_rpc_method_handler(
+                    servicer.ConvertCSVToXML,
                     request_deserializer=xml__service__pb2.XMLRequest.FromString,
                     response_serializer=xml__service__pb2.XMLResponse.SerializeToString,
             ),
@@ -85,6 +116,60 @@ class XMLParserService(object):
             request,
             target,
             '/xmlparser.XMLParserService/SendXMLFile',
+            xml__service__pb2.XMLRequest.SerializeToString,
+            xml__service__pb2.XMLResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetXMLSubset(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/xmlparser.XMLParserService/GetXMLSubset',
+            xml__service__pb2.TagIDRequest.SerializeToString,
+            xml__service__pb2.XMLSubsetResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ConvertCSVToXML(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/xmlparser.XMLParserService/ConvertCSVToXML',
             xml__service__pb2.XMLRequest.SerializeToString,
             xml__service__pb2.XMLResponse.FromString,
             options,
