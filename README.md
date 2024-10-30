@@ -1,3 +1,18 @@
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="./images/ipvc.png" alt="Logo" width="auto" height="200">
+  </a>
+
+  <h1 align="center">Instituto Politéncico Viana do Castelo</h1>
+
+  <h3 align="center">Integração de SIstemas</h3>
+
+  <h3 align="center">Lucas Maciel | João Fernandes</h3>
+
+  <h3 align="center">Document Object Model</h3>
+</p>
+
 # Serviço gRPC: XML Parser
 
 Este serviço fornece funcionalidades para upload de ficheiros XML, extração de subconjuntos de XML e conversão de
@@ -65,7 +80,7 @@ ficheiros CSV para XML, utilizando gRPC para a comunicação entre cliente e ser
     ```bash
     python client/client.py
     ```
-3. Para converter um ficheiro CSV para XML, edite o caminho do ficheiro CSV no código e execute:
+3. Para converter um ficheiro CSV para XML, edite o caminh****o do ficheiro CSV no código e execute:
     ```bash
     python client/client.py
     ```
